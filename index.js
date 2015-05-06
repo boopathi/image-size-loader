@@ -1,4 +1,3 @@
-var fs = require('fs');
 var sizeOf = require('image-size');
 var loaderUtils = require('loader-utils');
 
@@ -23,7 +22,6 @@ module.exports = function(content) {
     regExp: query.regExp
   });
 
-  var resourceBuf = fs.readFileSync(this.resourcePath);
   var dimensions = sizeOf(content);
 
   dimensions.src = this.options.output.publicPath
