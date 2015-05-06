@@ -4,7 +4,8 @@
   "author": "Patrick Collins @patcoll",
   "description": "image size loader module for webpack",
   "dependencies": {
-    "image-size": "^0.3.5"
+    "image-size": "^0.3.5",
+    "loader-utils": "^0.2.7"
   },
   "repository": {
     "type": "git",
