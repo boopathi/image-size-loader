@@ -56,7 +56,7 @@ Use this incase you'd want to add more properties to the output json.
 * `[ext]` the extension of the resource
 * `[name]` the basename of the resource
 * `[path]` the path of the resource relative to the `context` query parameter or option.
-* `[hash]` the hash or the content
+* `[hash]` the hash of the content
 * `[<hashType>:hash:<digestType>:<length>]` optionally you can configure
   * other `hashType`s, i. e. `sha1`, `md5`, `sha256`, `sha512`
   * other `digestType`s, i. e. `hex`, `base26`, `base32`, `base36`, `base49`, `base52`, `base58`, `base62`, `base64`
@@ -85,7 +85,6 @@ module.exports = {
     }
 };
 ```
-
 
 #### example_module.js
 
