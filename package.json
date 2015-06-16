@@ -4,7 +4,8 @@
   "author": "Patrick Collins <pat@burned.com>",
   "contributors": [
     "Patrick Collins <pat@burned.com>",
-    "Boopathi Rajaa <me@boopathi.in>"
+    "Boopathi Rajaa <me@boopathi.in>",
+    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>"
   ],
   "description": "image size loader module for webpack",
   "dependencies": {
