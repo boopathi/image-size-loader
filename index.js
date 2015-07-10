@@ -1,7 +1,18 @@
 var loaderUtils = require('loader-utils');
 var sizeOf = require('image-size');
 var fs = require('fs');
-var path = require('path');
+var urlre = new RegExp('^(?:[a-z]+:)?//', 'i');
+
+// some lightweight dumb uri join
+var urijoin = function(parts) {
+  var _parts = [];
+  parts.map(function(p) {
+    _parts = _parts.concat(
+      p.split('/').filter(function(x) {return x;})
+    );
+  });
+  return _parts.join('/');
+};
 
 module.exports = function(content) {
 
@@ -27,6 +38,11 @@ module.exports = function(content) {
   });
 
   var image = sizeOf(this.resourcePath);
+  var publicPath = this.options.output.publicPath;
+
+  image.src = publicPath
+    ? (urlre.test(publicPath) ? urijoin(publicPath, url) : path.join(publicPath, url))
+    : url
 
   image.src = this.options.output.publicPath
     ? path.join(this.options.output.publicPath, url)
