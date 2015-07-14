@@ -12,7 +12,7 @@ npm install image-size-loader --save
 var image = require("image-size!./file.png");
 // => emits file.png to the output directory
 // => returns an object
-// => { width: 150, height: 50, type: "png", src: "file.png", bytes: 1234 }
+// => { width: 150, height: 50, type: "png", src: __webpack_public_path__ + "file.png", bytes: 1234 }
 ```
 
 ## Options
@@ -24,16 +24,6 @@ var image = require("image-size!./file.png");
 ```js
 var image = require('image-size?name=[hash].[ext]!./file.png');
 ```
-
-**Note**: This overrides the config `output.imageFilename`.
-
-#### json
-
-```js
-var image = require('json!image-size?json!./file.png');
-```
-
-Use this incase you'd want to add more properties to the output json.
 
 ### Filename placeholders
 
@@ -56,17 +46,17 @@ Source: https://github.com/webpack/loader-utils#interpolatename
 ```js
 // webpack.config.js
 module.exports = {
-    output: {
-        publicPath: 'public/'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.(gif|jpeg|jpg|png|svg)$/,
-                loader: 'image-size'
-            }
-        ]
-    }
+  output: {
+    publicPath: '/public/'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.(gif|jpeg|jpg|png|svg)$/,
+        loader: 'image-size'
+      }
+    ]
+  }
 };
 ```
 
@@ -74,5 +64,5 @@ module.exports = {
 
 ``` javascript
 var result = require("./image.png");
-// => {width: 500, height: 700, type: "png", src: "public/image.png", bytes: 1234}
+// => {width: 500, height: 700, type: "png", src: __webpack_public_path__ + "image.png", bytes: 1234}
 ```
