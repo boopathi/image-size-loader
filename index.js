@@ -1,17 +1,22 @@
 var loaderUtils = require('loader-utils');
 var sizeOf = require('image-size');
 var fs = require('fs');
-var urlre = new RegExp('^(?:[a-z]+:)?//', 'i');
 
-// some lightweight dumb uri join
-var urijoin = function(parts) {
-  var _parts = [];
-  parts.map(function(p) {
-    _parts = _parts.concat(
-      p.split('/').filter(function(x) {return x;})
-    );
-  });
-  return _parts.join('/');
+var imageToString = function(image) {
+  return 'module.exports = {' + '\n'
+    + '  src: __webpack_public_path__ + ' + JSON.stringify(image.src) + ',\n'
+    + '  width: ' + JSON.stringify(image.width) + ',\n'
+    + '  height: ' + JSON.stringify(image.height) + ',\n'
+    + '  bytes: ' + JSON.stringify(image.bytes) + ',\n'
+    + '  type: ' + JSON.stringify(image.type) + ',\n'
+    + '};' + '\n'
+
+    // For requires from CSS when used with webpack css-loader,
+    // outputting an Object doesn't make sense,
+    // So overriding the toString method to output just the URL
+    + 'module.exports.toString = function() {' + '\n'
+    + '  return __webpack_public_path__ + ' + JSON.stringify(image.src) + ';\n'
+    + '};';
 };
 
 module.exports = function(content) {
@@ -34,32 +39,14 @@ module.exports = function(content) {
   });
 
   var image = sizeOf(this.resourcePath);
-  var publicPath = this.options.output.publicPath;
 
-  image.src = publicPath
-    ? (urlre.test(publicPath) ? urijoin(publicPath, url) : path.join(publicPath, url))
-    : url
-
-  image.src = this.options.output.publicPath
-    ? path.join(this.options.output.publicPath, url)
-    : url;
-
+  image.src = url;
   image.bytes = fs.statSync(this.resourcePath).size;
 
   this.emitFile(url, content);
 
-  var output = JSON.stringify(image);
+  return imageToString(image);
 
-  if (query.json) {
-    return output;
-  }
-
-  // For requires from CSS when used with webpack css-loader,
-  // outputting an Object doesn't make sense,
-  // So overriding the toString method to output just the URL
-  return 'module.exports = ' + output + ';'
-    + 'module.exports.toString = function() {'
-    + 'return ' + JSON.stringify(image.src) + '}';
 };
 
 module.exports.raw = true;

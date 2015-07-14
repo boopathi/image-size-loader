@@ -17,22 +17,6 @@ var image = require("image-size!./file.png");
 
 ## Options
 
-### `config.output.imageFilename`
-
-```js
-// webpack.config.js
-module.exports = {
-    output: {
-        imageFilename: '[name]-[hash].[ext]'
-    }
-}
-```
-
-### `config.output.publicPath`
-
-The path/URL that gets prepended to the output filename -
-https://github.com/webpack/docs/wiki/configuration#outputpublicpath
-
 ### query params
 
 #### name
