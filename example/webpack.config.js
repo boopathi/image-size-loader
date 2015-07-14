@@ -1,5 +1,5 @@
 var path = require('path');
-var loader = path.join(__dirname, '..', '..', 'index.js');
+var loader = path.join(__dirname, '..', 'index.js');
 var __DEV__ = process.env.NODE_ENV !== 'production';
 
 module.exports = {
