@@ -23,10 +23,6 @@ module.exports = function(content) {
   var query = loaderUtils.parseQuery(this.query);
   var filename = "[name].[ext]";
 
-  if (this.options.output.imageFilename) {
-    filename = this.options.output.imageFilename
-  }
-  // query.name overrides imageFilename
   if ('string' === typeof query.name) {
     filename = query.name;
   }
