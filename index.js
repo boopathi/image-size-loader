@@ -15,7 +15,7 @@ var imageToString = function(image) {
     // outputting an Object doesn't make sense,
     // So overriding the toString method to output just the URL
     + 'module.exports.toString = function() {' + '\n'
-    + '  return __webpack_public_path__ + ' + JSON.stringify(image.src) + ';\n'
+    + '  return ' + JSON.stringify(image.src) + ';\n'
     + '};';
 };
 
