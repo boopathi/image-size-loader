@@ -1,5 +1,7 @@
 # image size loader for webpack
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/boopathi/image-size-loader.svg)](https://greenkeeper.io/)
+
 A webpack image loader with extra size info for image.
 
 ## Usage
