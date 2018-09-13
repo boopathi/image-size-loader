@@ -25,7 +25,7 @@ module.exports = function(content) {
   if(!this.emitFile) throw new Error('emitFile is required from module system');
   this.addDependency(this.resourcePath);
 
-  var query = loaderUtils.parseQuery(this.query);
+  var query = loaderUtils.getOptions(this.query);
   var filename = "[name].[ext]";
 
   if ('string' === typeof query.name) {
