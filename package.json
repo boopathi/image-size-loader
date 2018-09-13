@@ -1,20 +1,21 @@
 {
   "name": "image-size-loader",
-  "version": "0.7.0",
-  "author": "Patrick Collins <pat@burned.com>",
+  "version": "0.7.1",
+  "author": "Léo Lapujade <leo.lapujade@gmail.com>",
   "contributors": [
     "Boopathi Rajaa <me@boopathi.in>",
     "Patrick Collins <pat@burned.com>",
-    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>"
+    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>",
+    "Léo Lapujade <leo.lapujade@gmail.com>"
   ],
   "description": "image size loader module for webpack",
   "dependencies": {
-    "image-size": "^0.3.5",
-    "loader-utils": "^0.2.7"
+    "image-size": "^0.6.3",
+    "loader-utils": "^1.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/patcoll/image-size-loader.git"
+    "url": "https://github.com/EoleO/image-size-loader.git"
   },
   "license": "Apache-2.0"
 }

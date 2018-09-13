@@ -53,7 +53,7 @@ module.exports = {
     loaders: [
       {
         test: /\.(gif|jpeg|jpg|png|svg)$/,
-        loader: 'image-size'
+        loader: 'image-size-loader'
       }
     ]
   }
