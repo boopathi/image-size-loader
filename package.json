@@ -9,8 +9,8 @@
   ],
   "description": "image size loader module for webpack",
   "dependencies": {
-    "image-size": "^0.3.5",
-    "loader-utils": "^0.2.7"
+    "image-size": "^0.6.3",
+    "loader-utils": "^1.1.0"
   },
   "repository": {
     "type": "git",
