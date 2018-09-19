@@ -1,5 +1,5 @@
 {
-  "name": "image-size-loader",
+  "name": "@eoleo/image-size-loader",
   "version": "0.7.1",
   "author": "Léo Lapujade <leo.lapujade@gmail.com>",
   "contributors": [
