@@ -25,7 +25,7 @@ module.exports = function(content) {
   this.addDependency(this.resourcePath);
 
   var options = loaderUtils.getOptions(this) || {};
-  var filename = "[name].[ext]";
+  var filename = "[name].[hash].[ext]";
 
   if ('string' === typeof options.name) {
     filename = options.name;
