@@ -1,22 +1,37 @@
 {
   "name": "@eoleo/image-size-loader",
-  "version": "0.8.0",
+  "version": "0.8.1",
+  "description": "An image size loader module for webpack",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EoleO/image-size-loader"
+  },
   "author": "Léo Lapujade <leo.lapujade@gmail.com>",
   "contributors": [
     "Boopathi Rajaa <me@boopathi.in>",
     "Léo Lapujade <leo.lapujade@gmail.com>",
     "Patrick Collins <pat@burned.com>",
-    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>"
+    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>",
+    "Tobias Koppers @sokra"
   ],
-  "description": "image size loader module for webpack",
+  "bin": "",
+  "main": "dist/cjs.js",
+  "engines": {
+    "node": ">= 6.9.0 < 7.0.0 || >= 8.9.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
+  },
   "dependencies": {
     "image-size": "^0.6.3",
     "loader-utils": "^1.1.0",
     "schema-utils": "^1.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EoleO/image-size-loader"
-  },
-  "license": "Apache-2.0"
+  "keywords": [
+    "webpack"
+  ]
 }
