@@ -11,7 +11,7 @@ import validateOptions from 'schema-utils';
 import schema from './options.json';
 
 function imageToString(image) {
-  return (`
+  return `
     module.exports = {
       src: ${image.src},
       width: ${JSON.stringify(image.width)},
@@ -25,7 +25,7 @@ function imageToString(image) {
     module.exports.toString = function() {
       return ${image.src};
     };
-  `);
+  `;
 }
 
 export default function imageSizeLoader(content) {
@@ -47,6 +47,9 @@ export default function imageSizeLoader(content) {
     content,
     regExp: options.regExp,
   });
+
+  const image = sizeOf(this.resourcePath);
+  image.bytes = fs.statSync(this.resourcePath).size;
 
   let outputPath = url;
 
@@ -81,9 +84,6 @@ export default function imageSizeLoader(content) {
     }
   }
 
-  const image = sizeOf(outputPath);
-  image.bytes = fs.statSync(outputPath).size;
-
   let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
 
   if (options.publicPath) {
@@ -98,14 +98,13 @@ export default function imageSizeLoader(content) {
     publicPath = JSON.stringify(publicPath);
   }
 
+  image.src = publicPath;
+
   // eslint-disable-next-line no-undefined
   if (options.emitFile === undefined || options.emitFile) {
     this.emitFile(outputPath, content);
   }
 
-  image.src = publicPath;
-
-  // TODO: revert to ES2015 Module export, when new CSS Pipeline is in place
   return imageToString(image);
 }
 
