@@ -47,7 +47,6 @@
     "cross-env": "^5.0.0",
     "del": "^3.0.0",
     "del-cli": "^1.0.0",
-    "pre-commit": "^1.0.0",
     "webpack": "^4.5.0",
     "webpack-defaults": "^2.3.0"
   },
