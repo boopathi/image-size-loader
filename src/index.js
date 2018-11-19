@@ -13,7 +13,7 @@ import schema from './options.json';
 function imageToString(image) {
   return (`
     module.exports = {
-      src: ${JSON.stringify(image.src)},
+      src: ${image.src},
       width: ${JSON.stringify(image.width)},
       height: ${JSON.stringify(image.height)},
       bytes: ${JSON.stringify(image.bytes)},
@@ -23,7 +23,7 @@ function imageToString(image) {
     // outputting an Object doesn't make sense,
     // So overriding the toString method to output just the URL
     module.exports.toString = function() {
-      return ${JSON.stringify(image.src)};
+      return ${image.src};
     };
   `);
 }
@@ -81,6 +81,9 @@ export default function imageSizeLoader(content) {
     }
   }
 
+  const image = sizeOf(outputPath);
+  image.bytes = fs.statSync(outputPath).size;
+
   let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
 
   if (options.publicPath) {
@@ -100,9 +103,7 @@ export default function imageSizeLoader(content) {
     this.emitFile(outputPath, content);
   }
 
-  const image = sizeOf(publicPath);
   image.src = publicPath;
-  image.bytes = fs.statSync(publicPath).size;
 
   // TODO: revert to ES2015 Module export, when new CSS Pipeline is in place
   return imageToString(image);

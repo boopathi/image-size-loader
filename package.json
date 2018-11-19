@@ -1,6 +1,6 @@
 {
   "name": "@eoleo/image-size-loader",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "An image size loader module for webpack",
   "license": "Apache-2.0",
   "repository": {
