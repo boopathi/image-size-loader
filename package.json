@@ -1,20 +1,56 @@
 {
-  "name": "image-size-loader",
-  "version": "0.7.0",
-  "author": "Patrick Collins <pat@burned.com>",
-  "contributors": [
-    "Boopathi Rajaa <me@boopathi.in>",
-    "Patrick Collins <pat@burned.com>",
-    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>"
-  ],
-  "description": "image size loader module for webpack",
-  "dependencies": {
-    "image-size": "^0.6.3",
-    "loader-utils": "^1.1.0"
-  },
+  "name": "@LesEchos/image-size-loader",
+  "version": "1.0.0",
+  "description": "An image size loader module for webpack",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/patcoll/image-size-loader.git"
+    "url": "https://github.com/LesEchos/image-size-loader"
   },
-  "license": "Apache-2.0"
+  "author": "Léo Lapujade <leo.lapujade@gmail.com>",
+  "contributors": [
+    "Boopathi Rajaa <me@boopathi.in>",
+    "Léo Lapujade <leo.lapujade@gmail.com>",
+    "Patrick Collins <pat@burned.com>",
+    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>",
+    "Tobias Koppers @sokra"
+  ],
+  "bin": "",
+  "main": "dist/cjs.js",
+  "engines": {
+    "node": ">= 6.9.0 < 7.0.0 || >= 8.9.0"
+  },
+  "scripts": {
+    "start": "npm run build -- -w",
+    "build": "cross-env NODE_ENV=production babel src -d dist --copy-files",
+    "clean": "del-cli dist",
+    "prebuild": "npm run clean",
+    "prepare": "npm run build",
+    "defaults": "webpack-defaults"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
+  },
+  "dependencies": {
+    "image-size": "^0.6.3",
+    "loader-utils": "^1.1.0",
+    "schema-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.0.0",
+    "babel-polyfill": "^6.0.0",
+    "babel-preset-env": "^1.0.0",
+    "cross-env": "^5.0.0",
+    "del": "^3.0.0",
+    "del-cli": "^1.0.0",
+    "webpack": "^4.5.0",
+    "webpack-defaults": "^2.3.0"
+  },
+  "keywords": [
+    "webpack"
+  ]
 }
