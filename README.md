@@ -1,68 +1,64 @@
-# image size loader for webpack
+# image-size-loader
 
-A webpack image loader with extra size info for image.
+A webpack image loader with extra meta information for image.
 
 ## Usage
 
 [Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
-``` javascript
-npm install image-size-loader --save
+## Getting Started
 
-var image = require("image-size!./file.png");
-// => emits file.png to the output directory
-// => returns an object
-// => { width: 150, height: 50, type: "png", src: __webpack_public_path__ + "file.png", bytes: 1234 }
+To begin, you'll need to install `image-size-loader`:
+
+```console
+$ npm install image-size-loader --save-dev
 ```
 
-## Options
-
-### query params
-
-#### name
-
-```js
-var image = require('image-size?name=[hash].[ext]!./file.png');
-```
-
-### Filename placeholders
-
-* `[ext]` the extension of the resource
-* `[name]` the basename of the resource
-* `[path]` the path of the resource relative to the `context` query parameter or option.
-* `[hash]` the hash of the content
-* `[<hashType>:hash:<digestType>:<length>]` optionally you can configure
-  * other `hashType`s, i. e. `sha1`, `md5`, `sha256`, `sha512`
-  * other `digestType`s, i. e. `hex`, `base26`, `base32`, `base36`, `base49`, `base52`, `base58`, `base62`, `base64`
-  * and `length` the length in chars
-* `[N]` the N-th match obtained from matching the current file name against the query param `regExp`
-
-Source: https://github.com/webpack/loader-utils#interpolatename
-
-## Examples
-
-#### webpack.config.js
+Then add the loader to your `webpack` config. For example:
 
 ```js
 // webpack.config.js
 module.exports = {
-  output: {
-    publicPath: '/public/'
-  },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.(gif|jpeg|jpg|png|svg)$/,
-        loader: 'image-size-loader'
+        test: /\.(gif|jpe?g|png|svg)$/,
+        use: [
+          {
+            loader: 'image-size-loader',
+            options: {}
+          }
+        ]
       }
     ]
   }
 };
 ```
 
-#### example_module.js
+## Import images
 
-``` javascript
-var result = require("./image.png");
-// => {width: 500, height: 700, type: "png", src: __webpack_public_path__ + "image.png", bytes: 1234}
+Import (or `require`) the target file(s) in one of the bundle's files:
+
+``` js
+// bundle file
+import image from './file.png';
 ```
+
+That return an object with extra meta info:
+
+```js
+  // console.log(image);
+  {
+    width: 150,
+    height: 50,
+    type: "png",
+    src: "/assets/images/file.png",
+    bytes: 1234
+  }
+```
+
+## More options
+
+More webpack config exemple on file-loader documentation
+
+[Documentation: file-loaders](https://github.com/webpack-contrib/file-loader/blob/master/README.md)
