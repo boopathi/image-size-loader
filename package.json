@@ -1,6 +1,6 @@
 {
   "name": "@LesEchos/image-size-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An image size loader module for webpack",
   "license": "Apache-2.0",
   "repository": {
