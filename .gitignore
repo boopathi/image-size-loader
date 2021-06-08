@@ -1,14 +1,19 @@
-# development
-/node_modules
+# Build
+dist/
 
-logs
-*.log
+# Test
+coverage/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
-/dist
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+
+# Misc
 .DS_Store
-Thumbs.db
-.idea
-.vscode
-*.sublime-project
-*.sublime-workspace
+.vscode/settings.json

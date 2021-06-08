@@ -11,7 +11,13 @@ A webpack image loader with extra meta information for image.
 To begin, you'll need to install `image-size-loader`:
 
 ```console
-$ npm install image-size-loader --save-dev
+$ npm install --save-dev @lesechos/image-size-loader
+```
+
+Or
+
+```console
+$ yarn add -D @lesechos/image-size-loader
 ```
 
 Then add the loader to your `webpack` config. For example:
@@ -22,16 +28,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(gif|jpe?g|png|svg)$/,
+        test: /\.(webp|gif|jpe?g|png|svg)$/,
         use: [
           {
-            loader: 'image-size-loader',
-            options: {}
-          }
-        ]
-      }
-    ]
-  }
+            loader: '@lesechos/image-size-loader',
+            options: {},
+          },
+        ],
+      },
+    ],
+  },
 };
 ```
 
@@ -39,7 +45,7 @@ module.exports = {
 
 Import (or `require`) the target file(s) in one of the bundle's files:
 
-``` js
+```js
 // bundle file
 import image from './file.png';
 ```
@@ -49,11 +55,12 @@ That return an object with extra meta info:
 ```js
   // console.log(image);
   {
-    width: 150,
-    height: 50,
-    type: "png",
-    src: "/assets/images/file.png",
     bytes: 1234
+    height: 50,
+    orientation: 1,
+    src: "/assets/images/file.png",
+    type: "png",
+    width: 150,
   }
 ```
 

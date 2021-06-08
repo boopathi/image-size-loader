@@ -1,6 +1,6 @@
 {
   "name": "@lesechos/image-size-loader",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An image size loader module for webpack",
   "license": "Apache-2.0",
   "repository": {
@@ -15,42 +15,77 @@
     "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>",
     "Tobias Koppers @sokra"
   ],
-  "bin": "",
   "main": "dist/cjs.js",
   "engines": {
-    "node": ">= 6.9.0 < 7.0.0 || >= 8.9.0"
+    "node": ">=9",
+    "npm": ">=5.6"
   },
   "scripts": {
-    "start": "npm run build -- -w",
-    "build": "cross-env NODE_ENV=production babel src -d dist --copy-files",
-    "clean": "del-cli dist",
+    "build": "cross-env NODE_ENV=production babel src -d dist --extensions '.ts' --ignore \"'src/**/interfaces.ts','src/**/*.d.ts','src/**/*.test.ts'\"",
+    "clean": "del dist",
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:ts": "tsc --noEmit",
     "prebuild": "npm run clean",
-    "prepare": "npm run build",
-    "defaults": "webpack-defaults"
+    "prepare": "husky install",
+    "test": "jest"
   },
   "files": [
     "dist"
   ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint"
+    ]
+  },
   "peerDependencies": {
-    "webpack": "^2.0.0 || ^3.0.0 || ^4.0.0"
+    "webpack": "^5.0.0"
   },
   "dependencies": {
-    "image-size": "^0.6.3",
-    "loader-utils": "^1.1.0",
-    "schema-utils": "^1.0.0"
+    "@babel/runtime-corejs3": "^7.14.0",
+    "core-js": "^3.14.0",
+    "image-size": "^1.0.0",
+    "loader-utils": "^2.0.0",
+    "schema-utils": "^3.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.0.0",
-    "babel-polyfill": "^6.0.0",
-    "babel-preset-env": "^1.0.0",
-    "cross-env": "^5.0.0",
-    "del": "^3.0.0",
-    "del-cli": "^1.0.0",
-    "webpack": "^4.5.0",
-    "webpack-defaults": "^2.3.0"
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-typescript": "^7.13.0",
+    "@babel/register": "^7.13.16",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@types/jest": "^26.0.23",
+    "@types/loader-utils": "^2.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "del": "^6.0.0",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "jest": "^27.0.3",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0",
+    "ts-jest": "^27.0.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1"
   },
   "keywords": [
-    "webpack"
+    "webpack",
+    "assets",
+    "images",
+    "meta"
   ]
 }
